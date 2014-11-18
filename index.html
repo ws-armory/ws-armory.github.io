@@ -1,1 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
 
+	<title>Wildstar Armory</title>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<script src="http://www.jabbithole.com/api/tooltips.js"></script>
+	<script>
+		function load_items_base64(){
+			load_items(JSON.parse(
+				atob(document.getElementById('input').value)
+			));
+		}
+		function load_items_json(){
+			load_items(JSON.parse(
+				document.getElementById('input').value
+			));
+		}
+	</script>
+
+	</head>
+	<body>
+
+	<table id="items">
+		<thead><tr><th>Slot</th><th>Item</th></tr></thead>
+		<tbody></tbody>
+	</table>
+	<hr/>
+	<textarea id="input" rows="8" cols="64" autofocus></textarea>
+	<br/>
+	<button onclick="load_items_json()">JSON</button>
+ 	<button onclick="load_items_base64()">Base64</button>
+
+	<script>
+		JH_options = {
+			colors: true,
+			names: true,
+			whitebg: true,
+			preload: true
+		};
+		function load_items(obj){
+			var table=document.getElementById('items');
+			var oldtbody=table.getElementsByTagName('tbody')[0];
+			var tbody=document.createElement('tbody');
+			table.replaceChild(tbody,oldtbody);
+			for (var key in obj) {
+				var tr = document.createElement('tr');
+				tbody.appendChild(tr);
+				var slot = document.createElement('td');
+				slot.appendChild(document.createTextNode(key));
+				tr.appendChild(slot);
+				var item = document.createElement('a');
+				item.appendChild(document.createTextNode(key));
+				item.href='http://' + JH_HOST + '/items/' + obj[key];
+				tr.appendChild(item);
+			}
+			JHinitialize();
+		}
+	</script>
+
+	</body>
+</html>
