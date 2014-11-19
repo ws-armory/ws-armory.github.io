@@ -39,6 +39,7 @@
 			thead = document.createElement('thead'),
 			tbody = document.createElement('tbody'),
 			button = document.createElement('button'),
+			share = document.createElement('p'),
 			link = document.createElement('a');
 
 			table.setAttribute('id','items');
@@ -49,14 +50,14 @@
 			thead.firstChild.childNodes[0].appendChild(
 				document.createTextNode('Slot')
 			);
-			thead.firstChild.childNodes[0].setAttribute('id','slot');
+			thead.firstChild.childNodes[0].setAttribute('class','slot');
 			thead.firstChild.appendChild(
 				document.createElement('th')
 			);
 			thead.firstChild.childNodes[1].appendChild(
 				document.createTextNode('Item')
 			);
-			thead.firstChild.childNodes[1].setAttribute('id','item');
+			thead.firstChild.childNodes[1].setAttribute('class','item');
 
 			table.appendChild(thead);
 			table.appendChild(tbody);
@@ -67,24 +68,25 @@
 			button.appendChild(document.createTextNode('Share'));
 			button.setAttribute('onclick','share()');
 
+			share.appendChild(button);
+			share.appendChild(link);
+
 			section.appendChild(table);
-			section.appendChild(
-				document.createElement('p').appendChild(
-					button
-				).parentNode.appendChild(
-					link
-				).parentNode
-			);
+			section.appendChild(share);
 
 			for (var key in obj) {
 				var tr = document.createElement('tr');
 				tbody.appendChild(tr);
 				var slot = document.createElement('td');
 				slot.appendChild(document.createTextNode(key));
+				slot.setAttribute('class','slot');
 				tr.appendChild(slot);
-				var item = document.createElement('a');
-				item.appendChild(document.createTextNode(obj[key]));
-				item.href='http://' + JH_HOST + '/items/' + obj[key];
+				var item = document.createElement('td');
+				item.appendChild(document.createElement('a'));
+				item.firstChild.appendChild(document.createTextNode(obj[key]));
+				item.firstChild.href='http://' + JH_HOST + '/items/' + obj[key];
+				item.firstChild.setAttribute('class','item');
+				item.setAttribute('class','item');
 				tr.appendChild(item);
 			}
 		}
