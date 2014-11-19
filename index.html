@@ -4,30 +4,29 @@
 	<title>Wildstar Armory</title>
 	<script>
 		function view(){
-			var input = document.getElementById('input').value,
+			var data = document.getElementById('data').value,
 			query;
 
-			try { input = atob(input) }
+			try { data = atob(data) }
 			catch(err){ }
 			finally {
-				try { input = JSON.parse(input) }
+				try { data = JSON.parse(data) }
 				catch(err) {
-					alert("Invalid input");
+					alert("Invalid data (has to be JSON)");
 					return;
 				}
 			}
 
-			// TODO: validate object "input"
+			// TODO: validate object "data"
 			query = '';
-			for (var key in input) {
+			for (var key in data) {
 				query = query
 					+ '&'
 					+ encodeURIComponent(key)
 					+ '='
-					+ encodeURIComponent(input[key])
+					+ encodeURIComponent(data[key])
 				;
 			}
-
 			window.location.assign('view.html?' + query.slice(1));
 		}
 	</script>
@@ -35,7 +34,10 @@
 <body>
 	<h1>Wildstar Armory</h1>
 
-	<textarea id="input" rows="8" cols="64" autofocus></textarea>
-	<p><button onclick="view()">Load</button><p>
+	<p>
+		<textarea id="data" rows="8" cols="64" autofocus></textarea>
+		<br/>
+		<button onclick="view()">Load</button>
+	</p>
 </body>
 </html>

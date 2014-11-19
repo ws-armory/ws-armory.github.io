@@ -33,12 +33,11 @@
 			return urlparams;
 		}
 
-		//window.onload = load_items(load_params());
-
 		function loadItems(obj){
-			var table = document.createElement('table')
+			var section = document.getElementById('main'),
+			table = document.createElement('table'),
 			thead = document.createElement('thead'),
-			tbody = document.createElement('tbody')
+			tbody = document.createElement('tbody'),
 			button = document.createElement('button'),
 			link = document.createElement('a');
 
@@ -68,8 +67,8 @@
 			button.appendChild(document.createTextNode('Share'));
 			button.setAttribute('onclick','share()');
 
-			document.body.appendChild(table);
-			document.body.appendChild(
+			section.appendChild(table);
+			section.appendChild(
 				document.createElement('p').appendChild(
 					button
 				).parentNode.appendChild(
@@ -107,5 +106,7 @@
 </head>
 <body>
 	<h1>Wildstar Armory</h1>
+	<section id="main">
+	</section>
 </body>
 </html>
