@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Wildstar Armory</title>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<script src="http://www.jabbithole.com/api/tooltips.js"></script>
+	<script>
+		function addLoadEvent(func) {
+			var oldonload = window.onload;
+			if (typeof window.onload != 'function') {
+				window.onload = func;
+				} else {
+				window.onload = function() {
+					func();
+					if (oldonload) {
+						oldonload();
+					}
+				}
+			}
+		}
+
+		function loadParams() {
+			var match,
+			urlparams = {},
+			exp = /([^&=]+)=?([^&]*)/g,
+			query  = window.location.search.substring(1);
+
+			while (match = exp.exec(query)) {
+				urlparams[decodeURIComponent(match[1])] =
+					decodeURIComponent(match[2]);
+			}
+
+			return urlparams;
+		}
+
+		//window.onload = load_items(load_params());
+
+		function loadItems(obj){
+			var table = document.createElement('table')
+			thead = document.createElement('thead'),
+			tbody = document.createElement('tbody')
+			button = document.createElement('button'),
+			link = document.createElement('a');
+
+			table.setAttribute('id','items');
+			thead.appendChild(document.createElement('tr'));
+			thead.firstChild.appendChild(
+				document.createElement('th')
+			);
+			thead.firstChild.childNodes[0].appendChild(
+				document.createTextNode('Slot')
+			);
+			thead.firstChild.childNodes[0].setAttribute('id','slot');
+			thead.firstChild.appendChild(
+				document.createElement('th')
+			);
+			thead.firstChild.childNodes[1].appendChild(
+				document.createTextNode('Item')
+			);
+			thead.firstChild.childNodes[1].setAttribute('id','item');
+
+			table.appendChild(thead);
+			table.appendChild(tbody);
+
+			link.setAttribute('id','share');
+			link.setAttribute('href','#');
+
+			button.appendChild(document.createTextNode('Share'));
+			button.setAttribute('onclick','share()');
+
+			document.body.appendChild(table);
+			document.body.appendChild(
+				document.createElement('p').appendChild(
+					button
+				).parentNode.appendChild(
+					link
+				).parentNode
+			);
+
+			for (var key in obj) {
+				var tr = document.createElement('tr');
+				tbody.appendChild(tr);
+				var slot = document.createElement('td');
+				slot.appendChild(document.createTextNode(key));
+				tr.appendChild(slot);
+				var item = document.createElement('a');
+				item.appendChild(document.createTextNode(obj[key]));
+				item.href='http://' + JH_HOST + '/items/' + obj[key];
+				tr.appendChild(item);
+			}
+		}
+
+		function share() {
+			alert("Share!");
+		}
+
+		addLoadEvent(function (){
+			JH_options = {
+				colors: true,
+				names: true,
+				whitebg: true,
+				preload: true
+			};
+			loadItems(loadParams());
+		});
+	</script>
+</head>
+<body>
+	<h1>Wildstar Armory</h1>
+</body>
+</html>
