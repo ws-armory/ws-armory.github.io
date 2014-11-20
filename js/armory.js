@@ -139,7 +139,7 @@ function loadItems(obj){
 		item.appendChild(document.createElement('a'));
 		item.firstChild.appendChild(document.createTextNode(obj[key]));
 		item.firstChild.setAttribute('class','item');
-		item.firstChild.href='http://' + JH_HOST + '/items/' + obj[key];
+		item.firstChild.href='http://' + JH_HOST + '/items/i-' + obj[key];
 		tr.appendChild(item);
 
 		tbody.appendChild(tr);
@@ -159,10 +159,10 @@ function initView() {
 	addLoadEvent(loadGoogleAnalytics());
 	addLoadEvent(function (){
 		JH_options = {
+			preload: true,
 			colors: true,
 			names: true,
 			whitebg: true,
-			preload: true
 		};
 		loadItems(loadParams());
 	});
