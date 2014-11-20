@@ -1,3 +1,20 @@
+const ITEM_SLOTS = [
+	"Chest",
+	"Legs",
+	"Head",
+	"Shoulder",
+	"Feet",
+	"Hands",
+	"Tool",
+	"Weapon Attachment",
+	"Support System",
+	"Key",
+	"Implant",
+	"Gadget",
+	"Energy Shield",
+	"Weapon",
+]
+
 function addLoadEvent(func) {
 	var oldonload = window.onload;
 	if (typeof window.onload != 'function') {
@@ -10,6 +27,34 @@ function addLoadEvent(func) {
 			}
 		}
 	}
+}
+
+function loadParams() {
+	var match,
+	urlparams = {},
+	exp = /([^&=]+)=?([^&]*)/g,
+	query  = window.location.search.substring(1);
+
+	while (match = exp.exec(query)) {
+		urlparams[decodeURIComponent(match[1])] =
+			decodeURIComponent(match[2]);
+	}
+
+	return urlparams;
+}
+
+function isValidSlot(num) {
+	if (isNaN(num))
+		return true;
+	else
+		return (parseInt(num)-1) < ITEM_SLOTS.length;
+}
+
+function getSlotName(num) {
+	if (isNaN(num))
+		return num;
+	else
+		return ITEM_SLOTS[parseInt(num)-1];
 }
 
 function viewItems(){
@@ -35,20 +80,6 @@ function viewItems(){
 	window.location.assign('view.html?' + query.slice(1));
 }
 
-function loadParams() {
-	var match,
-	urlparams = {},
-	exp = /([^&=]+)=?([^&]*)/g,
-	query  = window.location.search.substring(1);
-
-	while (match = exp.exec(query)) {
-		urlparams[decodeURIComponent(match[1])] =
-			decodeURIComponent(match[2]);
-	}
-
-	return urlparams;
-}
-
 function loadItems(obj){
 	var section = document.getElementById('main'),
 	table = document.createElement('table'),
@@ -59,6 +90,9 @@ function loadItems(obj){
 	link = document.createElement('a');
 
 	table.setAttribute('id','items');
+	table.appendChild(thead);
+	table.appendChild(tbody);
+
 	thead.appendChild(document.createElement('tr'));
 	thead.firstChild.appendChild(document.createElement('th'));
 	thead.firstChild.childNodes[0].appendChild(document.createTextNode('Slot'));
@@ -67,14 +101,11 @@ function loadItems(obj){
 	thead.firstChild.childNodes[1].appendChild(document.createTextNode('Item'));
 	thead.firstChild.childNodes[1].setAttribute('class','item');
 
-	table.appendChild(thead);
-	table.appendChild(tbody);
-
 	link.setAttribute('id','share');
 	link.setAttribute('href','#');
 
-	button.appendChild(document.createTextNode('Share'));
 	button.setAttribute('onclick','share()');
+	button.appendChild(document.createTextNode('Share'));
 
 	share.appendChild(button);
 	share.appendChild(link);
@@ -83,19 +114,25 @@ function loadItems(obj){
 	section.appendChild(share);
 
 	for (var key in obj) {
+		if (!isValidSlot(key))
+			continue;
+
 		var tr = document.createElement('tr');
-		tbody.appendChild(tr);
-		var slot = document.createElement('td');
-		slot.appendChild(document.createTextNode(key));
+		slot = document.createElement('td'),
+		item = document.createElement('td');
+
 		slot.setAttribute('class','slot');
+		slot.appendChild(document.createTextNode(getSlotName(key)));
 		tr.appendChild(slot);
-		var item = document.createElement('td');
+
+		item.setAttribute('class','item');
 		item.appendChild(document.createElement('a'));
 		item.firstChild.appendChild(document.createTextNode(obj[key]));
-		item.firstChild.href='http://' + JH_HOST + '/items/' + obj[key];
 		item.firstChild.setAttribute('class','item');
-		item.setAttribute('class','item');
+		item.firstChild.href='http://' + JH_HOST + '/items/' + obj[key];
 		tr.appendChild(item);
+
+		tbody.appendChild(tr);
 	}
 }
 
