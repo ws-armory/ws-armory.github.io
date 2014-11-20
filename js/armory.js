@@ -151,13 +151,12 @@ function share() {
 }
 
 
-
 function initIndex() {
-	loadGoogleAnalytics();
+	addLoadEvent(loadGoogleAnalytics());
 }
 
 function initView() {
-	loadGoogleAnalytics();
+	addLoadEvent(loadGoogleAnalytics());
 	addLoadEvent(function (){
 		JH_options = {
 			colors: true,
