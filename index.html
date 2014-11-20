@@ -1,35 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
 	<title>Wildstar Armory</title>
-	<script>
-		function viewItems(){
-			var data = document.getElementById('data').value,
-			query;
-
-			try { data = atob(data) }
-			catch(err){ }
-			finally {
-				try { data = JSON.parse(data) }
-				catch(err) {
-					alert("Invalid data (has to be JSON)");
-					return;
-				}
-			}
-
-			// TODO: validate object "data"
-			query = '';
-			for (var key in data) {
-				query = query
-					+ '&'
-					+ encodeURIComponent(key)
-					+ '='
-					+ encodeURIComponent(data[key])
-				;
-			}
-			window.location.assign('view.html?' + query.slice(1));
-		}
-	</script>
+	<script src="js/armory.js"></script>
 </head>
 <body>
 	<header>
