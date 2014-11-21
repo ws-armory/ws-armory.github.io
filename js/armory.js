@@ -130,6 +130,10 @@ function loadItems(obj){
 
 	link.style.visibility = 'hidden';
 	link.setAttribute('id','sharelink');
+	link.setAttribute('onfocus','this.select()');
+	link.setAttribute('onmouseup','return false;');
+	link.setAttribute('type','text');
+	link.setAttribute('size','32');
 
 	error.setAttribute('id','shareerror');
 
