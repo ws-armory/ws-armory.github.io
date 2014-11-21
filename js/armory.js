@@ -186,10 +186,10 @@ function setShareLink() {
 				var l = JSON.parse(xmlhttp.responseText),
 					parser = document.createElement('a');
 				parser.href = l['id'];
-				//link.setAttribute('value',l['id']);
-				//link.setAttribute('value',window.location.protocol + '//' + window.location.host + window.location.pathname.replace(/\\/g, '/').replace(/\/[^\/]*\/?$/, '')	+ '/v?' + parser.pathname.substr(1));
 				link.setAttribute('value',
-				getRemoteUrl('v?' + parser.pathname.substr(1)));
+					getRemoteUrl('v.html?'
+						+ parser.pathname.substr(1))
+				);
 				link.style.visibility = 'visible';
 				linked = true;
 			}
@@ -238,7 +238,6 @@ function getItemsPageParams(params) {
 	if (GOOGLE_API_KEY != null)
 		url = url + '&key=' + GOOGLE_API_KEY;
 
-	console.log(url);
 	xmlhttp.open('GET',url,false);
 	xmlhttp.setRequestHeader("Accept","application/json");
 	xmlhttp.send(null);
@@ -251,7 +250,6 @@ function getItemsPageParams(params) {
 	}
 	else
 	{
-		console.log(error);
 		error.innerHTML =
 			"Got " + xmlhttp.status + " status "
 			+ " using the URL shortening API<br>"
