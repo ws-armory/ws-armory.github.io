@@ -1,3 +1,5 @@
+const GOOGLE_API_KEY=null
+const GOOGLE_SHORTENER_API="https://www.googleapis.com/urlshortener/v1/url"
 const ITEM_SLOTS = [
 	"Chest",
 	"Legs",
@@ -14,6 +16,7 @@ const ITEM_SLOTS = [
 	"Energy Shield",
 	"Weapon",
 ]
+var linked = false;
 
 function addLoadEvent(func) {
 	var oldonload = window.onload;
@@ -97,7 +100,8 @@ function loadItems(obj){
 	tbody = document.createElement('tbody'),
 	button = document.createElement('button'),
 	share = document.createElement('p'),
-	link = document.createElement('a');
+	link = document.createElement('input'),
+	error = document.createElement('p');
 
 	table.setAttribute('id','items');
 	table.appendChild(thead);
@@ -111,17 +115,21 @@ function loadItems(obj){
 	thead.firstChild.childNodes[1].appendChild(document.createTextNode('Item'));
 	thead.firstChild.childNodes[1].setAttribute('class','item');
 
-	link.setAttribute('id','share');
-	link.setAttribute('href','#');
-
-	button.setAttribute('onclick','share()');
+	button.setAttribute('onclick','setShareLink()');
 	button.appendChild(document.createTextNode('Share'));
 
+	link.style.visibility = 'hidden';
+	link.setAttribute('id','sharelink');
+
+	error.setAttribute('id','shareerror');
+
+	share.setAttribute('id','share');
 	share.appendChild(button);
 	share.appendChild(link);
 
 	section.appendChild(table);
 	section.appendChild(share);
+	share.appendChild(error);
 
 	for (var key in obj) {
 		if (!isValidSlot(key))
@@ -146,8 +154,50 @@ function loadItems(obj){
 	}
 }
 
-function share() {
-	alert("Share!");
+function setShareLink() {
+	if (!window.XMLHttpRequest) {
+		alert("XMLHttpRequest is disabled, please use a recent browser");
+		return
+	}
+
+	if (linked) // already shared
+		return;
+
+	var xmlhttp = new XMLHttpRequest(),
+	    link = document.getElementById("sharelink"),
+	    error = document.getElementById("shareerror"),
+	    share = document.getElementById("share"),
+	    params = {};
+
+	xmlhttp.onreadystatechange = function (){
+		if (xmlhttp.readyState == 4) {
+		    	if (xmlhttp.status == 200)
+			{
+				var l = JSON.parse(xmlhttp.responseText);
+				link.setAttribute('value',l['id']);
+				//link.innerHTML = l['id'];
+				link.style.visibility = 'visible';
+				linked = true;
+			}
+			else
+			{
+				error.innerHTML =
+					"Got " + xmlhttp.status + " status "
+					+ " using the URL shortening API "
+					+ "(error: "+xmlhttp.responseText+")";
+			}
+		}
+	}
+
+	xmlhttp.open('POST',GOOGLE_SHORTENER_API,true);
+
+	xmlhttp.setRequestHeader("Accept","application/json");
+	xmlhttp.setRequestHeader("Content-type","application/json");
+
+	params['longUrl'] = window.location.href;
+	if (GOOGLE_API_KEY != null)
+		params['key'] = GOOGLE_API_KEY;
+	xmlhttp.send(JSON.stringify(params));
 }
 
 
