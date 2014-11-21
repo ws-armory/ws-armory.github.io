@@ -1,5 +1,6 @@
 const GOOGLE_API_KEY=null
 const GOOGLE_SHORTENER_API="https://www.googleapis.com/urlshortener/v1/url"
+const GOOGLE_SHORTENER_URI="http://goo.gl/"
 const ITEM_SLOTS = [
 	"Chest",
 	"Legs",
@@ -30,6 +31,15 @@ function addLoadEvent(func) {
 			}
 		}
 	}
+}
+
+function getRemoteUrl(path) {
+	return window.location.protocol + '//'
+		+ window.location.host + getLocalUrl(path);
+}
+
+function getLocalUrl(path) {
+	return window.location.pathname.replace(/\\/g, '/').replace(/\/[^\/]*\/?$/, '') + '/' + path;
 }
 
 function loadGoogleAnalytics() {
@@ -90,7 +100,7 @@ function viewItems(){
 		query = query + '&' + encodeURIComponent(key)
 			+ '='+ encodeURIComponent(data[key]);
 	}
-	window.location.assign('view.html?' + query.slice(1));
+	window.location.assign(getLocalUrl('view.html?' + query.slice(1)));
 }
 
 function loadItems(obj){
@@ -173,9 +183,13 @@ function setShareLink() {
 		if (xmlhttp.readyState == 4) {
 		    	if (xmlhttp.status == 200)
 			{
-				var l = JSON.parse(xmlhttp.responseText);
-				link.setAttribute('value',l['id']);
-				//link.innerHTML = l['id'];
+				var l = JSON.parse(xmlhttp.responseText),
+					parser = document.createElement('a');
+				parser.href = l['id'];
+				//link.setAttribute('value',l['id']);
+				//link.setAttribute('value',window.location.protocol + '//' + window.location.host + window.location.pathname.replace(/\\/g, '/').replace(/\/[^\/]*\/?$/, '')	+ '/v?' + parser.pathname.substr(1));
+				link.setAttribute('value',
+				getRemoteUrl('v?' + parser.pathname.substr(1)));
 				link.style.visibility = 'visible';
 				linked = true;
 			}
@@ -183,8 +197,8 @@ function setShareLink() {
 			{
 				error.innerHTML =
 					"Got " + xmlhttp.status + " status "
-					+ " using the URL shortening API "
-					+ "(error: "+xmlhttp.responseText+")";
+					+ " using the URL shortening API<br/>"
+					+ "Error: "+xmlhttp.responseText;
 			}
 		}
 	}
@@ -198,6 +212,52 @@ function setShareLink() {
 	if (GOOGLE_API_KEY != null)
 		params['key'] = GOOGLE_API_KEY;
 	xmlhttp.send(JSON.stringify(params));
+}
+
+function getItemsPageParams(params) {
+	if (!window.XMLHttpRequest) {
+		alert("XMLHttpRequest is disabled, please use a recent browser");
+		return
+	}
+
+	if (params.length > 1)
+		return;
+
+
+	var xmlhttp = new XMLHttpRequest(),
+	    	error = document.getElementById("error"),
+		key = null,
+		url = null;
+
+	for (var k in params) {
+		key = k;
+		break;
+	}
+
+	url = GOOGLE_SHORTENER_API + '?shortUrl=' + GOOGLE_SHORTENER_URI + key;
+	if (GOOGLE_API_KEY != null)
+		url = url + '&key=' + GOOGLE_API_KEY;
+
+	console.log(url);
+	xmlhttp.open('GET',url,false);
+	xmlhttp.setRequestHeader("Accept","application/json");
+	xmlhttp.send(null);
+
+	if (xmlhttp.status == 200) {
+		var uri = document.createElement('a');
+		uri.href = JSON.parse(xmlhttp.responseText)['longUrl'];
+
+		return uri.search;
+	}
+	else
+	{
+		console.log(error);
+		error.innerHTML =
+			"Got " + xmlhttp.status + " status "
+			+ " using the URL shortening API<br>"
+			+ "Error: " + xmlhttp.responseText;
+	}
+	return null;
 }
 
 
@@ -215,5 +275,13 @@ function initView() {
 			whitebg: true,
 		};
 		loadItems(loadParams());
+	});
+}
+
+function initRedirect() {
+	addLoadEvent(function (){
+		params = getItemsPageParams(loadParams())
+		if (params)
+			window.location.assign(getLocalUrl('view.html' + params));
 	});
 }
