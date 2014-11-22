@@ -133,7 +133,6 @@ function loadItems(obj){
 	link.setAttribute('onfocus','this.select()');
 	link.setAttribute('onmouseup','return false;');
 	link.setAttribute('type','text');
-	link.setAttribute('size','32');
 
 	error.id = 'shareerror';
 
