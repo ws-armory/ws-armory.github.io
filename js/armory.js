@@ -193,7 +193,7 @@ function setShareLink() {
 					parser = document.createElement('a');
 				parser.href = l['id'];
 				link.setAttribute('value',
-					getRemoteUrl('v.html?'
+					getRemoteUrl('v?'
 						+ parser.pathname.substr(1))
 				);
 				link.style.visibility = 'visible';
