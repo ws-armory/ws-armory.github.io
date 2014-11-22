@@ -197,6 +197,7 @@ function setShareLink() {
 						+ parser.pathname.substr(1))
 				);
 				link.style.visibility = 'visible';
+				link.focus();
 				linked = true;
 			}
 			else
