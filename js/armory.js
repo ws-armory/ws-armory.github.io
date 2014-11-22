@@ -286,6 +286,13 @@ function initRedirect() {
 	addLoadEvent(function (){
 		params = getItemsPageParams(loadParams())
 		if (params)
+		{
 			window.location.assign(getLocalUrl('view.html' + params));
+		}
+		else
+		{
+			document.getElementById("error").innerHTML =
+				"Error: invalid query string !";
+		}
 	});
 }
