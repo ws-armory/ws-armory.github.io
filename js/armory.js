@@ -1,22 +1,23 @@
 const GOOGLE_API_KEY="AIzaSyDTZXoxGEyZZmCZmqCKxe0zBDUvaapwCfY"
 const GOOGLE_SHORTENER_API="https://www.googleapis.com/urlshortener/v1/url"
 const GOOGLE_SHORTENER_URI="http://goo.gl/"
-const ITEM_SLOTS = [
-	"Chest",
-	"Legs",
-	"Head",
-	"Shoulder",
-	"Feet",
-	"Hands",
-	"Tool",
-	"Weapon Attachment",
-	"Support System",
-	"Key",
-	"Implant",
-	"Gadget",
-	"Energy Shield",
-	"Weapon",
-]
+const ITEM_SLOTS = {
+	0: "Chest",
+	1: "Legs",
+	2: "Head",
+	3: "Shoulder",
+	4: "Feet",
+	5: "Hands",
+	//6: "Tool",
+	7: "Weapon Attachment",
+	8: "Support System",
+	//9: "Key",
+	10: "Implant",
+	11: "Gadget",
+	15: "Energy Shield",
+	16: "Weapon",
+	//17: "Bag",
+}
 var linked = false;
 
 function addLoadEvent(func) {
@@ -77,7 +78,12 @@ function getSlotName(num) {
 	if (isNaN(num))
 		return num;
 	else
-		return ITEM_SLOTS[parseInt(num)-1];
+	{
+		if (ITEM_SLOTS[parseInt(num)])
+			return ITEM_SLOTS[parseInt(num)];
+		else
+			return num;
+	}
 }
 
 function viewItems(){
