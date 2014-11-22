@@ -190,12 +190,13 @@ function setShareLink() {
 		    	if (xmlhttp.status == 200)
 			{
 				var l = JSON.parse(xmlhttp.responseText),
-					parser = document.createElement('a');
+					parser = document.createElement('a'),
+					goid;
 				parser.href = l['id'];
-				link.setAttribute('value',
-					getRemoteUrl('v?'
-						+ parser.pathname.substr(1))
-				);
+				goid = parser.pathname;
+				if (goid.charAt(0) == '/')
+					goid = goid.substr(1);
+				link.setAttribute('value',getRemoteUrl('v?'+goid));
 				link.style.visibility = 'visible';
 				link.focus();
 				linked = true;
