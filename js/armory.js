@@ -67,13 +67,6 @@ function loadParams() {
 	return urlparams;
 }
 
-function isValidSlot(num) {
-	if (isNaN(num))
-		return true;
-	else
-		return (parseInt(num)-1) < ITEM_SLOTS.length;
-}
-
 function getSlotName(num) {
 	if (isNaN(num))
 		return num;
@@ -151,7 +144,7 @@ function loadItems(obj){
 	share.appendChild(error);
 
 	for (var key in obj) {
-		if (!isValidSlot(key))
+		if (obj[key] && isNaN(obj[key]))
 			continue;
 
 		var tr = document.createElement('tr');
