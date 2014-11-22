@@ -113,31 +113,31 @@ function loadItems(obj){
 	link = document.createElement('input'),
 	error = document.createElement('p');
 
-	table.setAttribute('id','items');
+	table.id = 'items';
 	table.appendChild(thead);
 	table.appendChild(tbody);
 
 	thead.appendChild(document.createElement('tr'));
 	thead.firstChild.appendChild(document.createElement('th'));
 	thead.firstChild.childNodes[0].appendChild(document.createTextNode('Slot'));
-	thead.firstChild.childNodes[0].setAttribute('class','slot');
+	thead.firstChild.childNodes[0].className = 'slot';
 	thead.firstChild.appendChild(document.createElement('th'));
 	thead.firstChild.childNodes[1].appendChild(document.createTextNode('Item'));
-	thead.firstChild.childNodes[1].setAttribute('class','item');
+	thead.firstChild.childNodes[1].className = 'item';
 
 	button.setAttribute('onclick','setShareLink()');
 	button.appendChild(document.createTextNode('Share'));
 
 	link.style.visibility = 'hidden';
-	link.setAttribute('id','sharelink');
+	link.id = 'sharelink';
 	link.setAttribute('onfocus','this.select()');
 	link.setAttribute('onmouseup','return false;');
 	link.setAttribute('type','text');
 	link.setAttribute('size','32');
 
-	error.setAttribute('id','shareerror');
+	error.id = 'shareerror';
 
-	share.setAttribute('id','share');
+	share.id = 'share';
 	share.appendChild(button);
 	share.appendChild(link);
 
@@ -151,18 +151,21 @@ function loadItems(obj){
 
 		var tr = document.createElement('tr');
 		slot = document.createElement('td'),
-		item = document.createElement('td');
+		it = document.createElement('td'),
+		a = document.createElement('a');
 
-		slot.setAttribute('class','slot');
+		slot.className = 'slot';
 		slot.appendChild(document.createTextNode(getSlotName(key)));
-		tr.appendChild(slot);
 
-		item.setAttribute('class','item');
-		item.appendChild(document.createElement('a'));
-		item.firstChild.appendChild(document.createTextNode(obj[key]));
-		item.firstChild.setAttribute('class','item');
-		item.firstChild.href='http://' + JH_HOST + '/items/i-' + obj[key];
-		tr.appendChild(item);
+		a.className = 'item';
+		a.href='http://' + JH_HOST + '/items/i-' + obj[key];
+		a.appendChild(document.createTextNode(obj[key]));
+
+		it.className = 'item';
+		it.appendChild(a);
+
+		tr.appendChild(slot);
+		tr.appendChild(it);
 
 		tbody.appendChild(tr);
 	}
