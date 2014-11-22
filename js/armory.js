@@ -1,4 +1,4 @@
-const GOOGLE_API_KEY=null
+const GOOGLE_API_KEY="AIzaSyDTZXoxGEyZZmCZmqCKxe0zBDUvaapwCfY"
 const GOOGLE_SHORTENER_API="https://www.googleapis.com/urlshortener/v1/url"
 const GOOGLE_SHORTENER_URI="http://goo.gl/"
 const ITEM_SLOTS = [
@@ -183,7 +183,7 @@ function setShareLink() {
 	    link = document.getElementById("sharelink"),
 	    error = document.getElementById("shareerror"),
 	    share = document.getElementById("share"),
-	    params = {};
+	    url;
 
 	xmlhttp.onreadystatechange = function (){
 		if (xmlhttp.readyState == 4) {
@@ -211,15 +211,16 @@ function setShareLink() {
 		}
 	}
 
-	xmlhttp.open('POST',GOOGLE_SHORTENER_API,true);
+	url = GOOGLE_SHORTENER_API;
+	if (GOOGLE_API_KEY != null)
+		url = url + '?key=' + GOOGLE_API_KEY;
+
+	xmlhttp.open('POST',url,true);
 
 	xmlhttp.setRequestHeader("Accept","application/json");
 	xmlhttp.setRequestHeader("Content-type","application/json");
 
-	params['longUrl'] = window.location.href;
-	if (GOOGLE_API_KEY != null)
-		params['key'] = GOOGLE_API_KEY;
-	xmlhttp.send(JSON.stringify(params));
+	xmlhttp.send(JSON.stringify({'longUrl': window.location.href}));
 }
 
 function getItemsPageParams(params) {
