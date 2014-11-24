@@ -99,18 +99,24 @@ function viewItems(){
 		query = query + '&' + encodeURIComponent(key)
 			+ '='+ encodeURIComponent(data[key]);
 	}
-	window.location.assign(getLocalUrl('view.html?' + query.slice(1)));
+	window.location.assign(getLocalUrl('?' + query.slice(1)));
 }
 
 function loadItems(obj){
 	var section = document.getElementById('main'),
-	table = document.createElement('table'),
+	    error = document.getElementById('error');
+
+	if (obj == null || Object.getOwnPropertyNames(obj).length === 0) {
+		error.innerHTML = "No items given !";
+		return;
+	}
+
+	var table = document.createElement('table'),
 	thead = document.createElement('thead'),
 	tbody = document.createElement('tbody'),
 	button = document.createElement('button'),
 	share = document.createElement('p'),
-	link = document.createElement('input'),
-	error = document.createElement('p');
+	link = document.createElement('input');
 
 	table.id = 'items';
 	table.appendChild(thead);
@@ -133,15 +139,12 @@ function loadItems(obj){
 	link.setAttribute('onmouseup','return false;');
 	link.setAttribute('type','text');
 
-	error.id = 'shareerror';
-
 	share.id = 'share';
 	share.appendChild(button);
 	share.appendChild(link);
 
 	section.appendChild(table);
 	section.appendChild(share);
-	share.appendChild(error);
 
 	for (var key in obj) {
 		if (obj[key] && isNaN(obj[key]))
@@ -179,9 +182,9 @@ function setShareLink() {
 		return;
 
 	var xmlhttp = new XMLHttpRequest(),
-	    link = document.getElementById("sharelink"),
-	    error = document.getElementById("shareerror"),
-	    share = document.getElementById("share"),
+	    link = document.getElementById('sharelink'),
+	    error = document.getElementById('error'),
+	    share = document.getElementById('share'),
 	    url;
 
 	xmlhttp.onreadystatechange = function (){
@@ -233,7 +236,7 @@ function getItemsPageParams(params) {
 
 
 	var xmlhttp = new XMLHttpRequest(),
-	    	error = document.getElementById("error"),
+	    	error = document.getElementById('error'),
 		key = null,
 		url = null;
 
@@ -289,11 +292,11 @@ function initRedirect() {
 		params = getItemsPageParams(loadParams())
 		if (params)
 		{
-			window.location.assign(getLocalUrl('view.html' + params));
+			window.location.assign(getLocalUrl(params));
 		}
 		else
 		{
-			document.getElementById("error").innerHTML =
+			document.getElementById('error').innerHTML =
 				"Error: invalid query string !";
 		}
 	});
