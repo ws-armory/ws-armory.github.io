@@ -19,8 +19,6 @@ That's pretty much why I'm currently looking for some people to create a team to
 
 ## We need you ! ##
 
-If you have some time and you want to take part of the adventure, just [contact me](http://github.com/olbat) or create some [pull requests](https://help.github.com/articles/creating-a-pull-request/) to propose your improvements.
-
 If you have some skills in **Web design** and **Web development** (JavaScript for the moment) you'll probably be interested by the [ws-armory.github.io project](http://github.io/ws-armory/ws-armory.github.io).
 
 If you have some skills in **Wildstar addons development** you'll probably be interested by the [Armory project](http://github.io/ws-armory/Armory).
@@ -28,9 +26,9 @@ If you have some skills in **Wildstar addons development** you'll probably be in
 
 ## Contributing ##
 
-If you have some ideas of improvements, do not hesitate so contact me and/or to submit pull requests ([for the website](https://github.com/ws-armory/ws-armory.github.io/pulls), [for the addon](https://github.com/ws-armory/Armory/pulls)).
+If you have some time and you want to take part of the adventure, just [contact me](http://github.com/olbat) or create some [pull requests](https://help.github.com/articles/creating-a-pull-request/) to propose your improvements.
 
-If you're not familiar with [Git](http://git-scm.com/book/en/v2/Getting-Started-About-Version-Control) and/or [Github](https://try.github.io/) and you're not familiar with [pull requests](https://help.github.com/articles/creating-a-pull-request/), do not hesitate to [contact me](http://github.com/olbat) !
+If you're not familiar with [Git](http://git-scm.com/book/en/v2/Getting-Started-About-Version-Control) and/or [Github](https://try.github.io/) and you're not familiar with [pull requests](https://help.github.com/articles/creating-a-pull-request/), do not hesitate to [contact me](http://github.com/olbat) to get some help.
 
 
 ## Contact ##
