@@ -8,15 +8,15 @@ const ITEM_SLOTS = {
 	3: "Shoulder",
 	4: "Feet",
 	5: "Hands",
-	//6: "Tool",
+	6: "Tool",
 	7: "Weapon Attachment",
 	8: "Support System",
-	//9: "Key",
+	9: "Key",
 	10: "Implant",
 	11: "Gadget",
 	15: "Energy Shield",
 	16: "Weapon",
-	//17: "Bag",
+	17: "Bag",
 }
 var linked = false;
 
