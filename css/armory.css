@@ -2,6 +2,10 @@
 	text-align: left;
 }
 
+#recruiting {
+	text-align: right;
+}
+
 #items th.slot {
 	width: 150px;
 }
