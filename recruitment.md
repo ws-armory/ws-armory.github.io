@@ -7,6 +7,7 @@ title: Recruitment
 ## State of the project ##
 
 As you noticed, there is still a lot of work to do on the project:
+
 * The website looks terrible ([more](https://github.com/ws-armory/ws-armory.github.io/issues/2))
 * It should provide more features ([more](https://github.com/ws-armory/ws-armory.github.io/issues/4))
 * The addon isn't really convenient to use ([more](https://github.com/ws-armory/Armory/issues/3))
