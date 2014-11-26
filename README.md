@@ -1,5 +1,16 @@
 # Wildstar "Armory" project ##
 
+## Summary ##
+* [Overview](#overview)
+* [Developer Notes](#developer-notes)
+  * [How does it work](#how-does-it-work)
+  * [TL;DR](#tldr)
+  * [The query string](#the-query-string)
+  * [Page template](#page-template)
+  * [URL shortening](#url-shortening)
+  * [Application backend](#application-backend)
+* [Contact](#contact)
+
 ## Overview ##
 
 The main idea of this project is to provide a way for [Wildstar](http://wildstar-online.com/) players to share a link to their equipment (to post it on forums or in a guide for example).
