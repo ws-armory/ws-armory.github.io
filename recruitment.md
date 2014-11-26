@@ -28,7 +28,7 @@ If you have some skills in **Wildstar addons development** you'll probably be in
 
 If you have some time and you want to take part of the adventure, just [contact me](http://github.com/olbat) or create some [pull requests](https://help.github.com/articles/creating-a-pull-request/) to propose your improvements.
 
-If you're not familiar with [Git](http://git-scm.com/book/en/v2/Getting-Started-About-Version-Control) and/or [Github](https://try.github.io/) and you're not familiar with [pull requests](https://help.github.com/articles/creating-a-pull-request/), do not hesitate to [contact me](http://github.com/olbat) to get some help.
+If you're not familiar with [Git](http://git-scm.com/book/en/v2/Getting-Started-About-Version-Control) and/or [Github](https://try.github.io/) and you're not familiar with [pull requests](https://help.github.com/articles/creating-a-pull-request/), do not hesitate to ask for help.
 
 
 ## Contact ##
