@@ -16,18 +16,18 @@
 
 The main idea of this project is to provide a way for [Wildstar](http://wildstar-online.com/) players to share a link to their equipment (to post it on forums or in a guide for example).
 
-The [website](http://ws-armory.github.io/) for two things: visualize the equipments and get a shorten version of the link for sharing purpose.
+The [website](http://ws-armory.github.io/) is used for two things: visualize the equipments and get a short link for sharing purpose.
 
-It is possible to get a link (in-game) to your current equipment using the [Armory addon](http://http://curse.com/project/225711) for Wildstar. It is also possible to build your own list ([more](#)).
+It is possible to get a link to your equipment in-game using the [Armory addon](http://http://curse.com/project/225711) for Wildstar. It is also possible to build your own list ([more](https://github.com/ws-armory/ws-armory.github.io#building-custom-lists)).
 
 
 ## Developer Notes ##
 
 ### How does it work ###
 
-Wildstar in-game API exposes unique _#_ to reference each objects, this objects can be found in different online databases such as [Jabbithole](http://www.jabbithole.com).
+Wildstar in-game API exposes unique _#_ to reference each objects, information about this objects can be found in different online databases such as [Jabbithole](http://www.jabbithole.com).
 
-Items names and pretty tooltip view are generated using the [Jabbithole](http://www.jabbithole.com) tooltips JavaScript API which takes this items unique _#_ as parameter.
+Items names and pretty tooltips are generated using the [Jabbithole](http://www.jabbithole.com) tooltips JavaScript [API](http://www.jabbithole.com/pages/tooltips) which takes this items unique _#_ as parameter.
 
 The in-game addon gather couples of (_slot_id_, _item_id_) then generates a link to the website based on this couples.
 
@@ -140,7 +140,7 @@ For the moment everything on the website is done a static way using HTML and Jav
 
 I would like to keep it working like this as much time as possible not to have to deal with web hosting and service maintenance.
 
-Nevertheless, if think of a killer feature and you really need to base it on a backend-oriented solution, we can [discuss](https://gitter.im/ws-armory/chat) about it, I'm open to any suggestions that will allow to improve the website.
+Nevertheless, if think of a killer feature and you really need to base it on a backend-oriented solution, we can [discuss](https://gitter.im/ws-armory/ws-armory.github.io/~chat) about it, I'm open to any suggestions that will allow to improve the website.
 
 
 ## Contact ##
