@@ -1,3 +1,7 @@
+---
+title: Recruitment
+---
+
 # Recruitment #
 
 ## State of the project ##
