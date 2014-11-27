@@ -87,11 +87,20 @@ Here is some examples of valid links to the equipment with id `#1234` (which is 
 * http://ws-armory.github.io/index.html?16=1234
 
 #### Building custom lists ####
-You can build custom lists by specifying the slot names as key of the query string. You can add as much items you want as long as the URL size do not excess 256 characters.
 
-Here are some samples of custom lists:
+##### Specifying slot names #####
+You can build lists with custom slot names by specifying names for slots (instead of _#_) as key of the query string.
+
+Here are some examples of lists with custom slot names:
 * http://ws-armory.github.io/?Weapon=1234&Uber%20Weapon=4321&Wondeful%20Chest=9999
 * http://ws-armory.github.io/?16=1234&14=4321&Alternative%20Weapon=9999
+
+##### Several items for the same slot #####
+It is possible to give several items for the same slot by specifying the slot name/_#_ as a key several times in the query string. In the view, a number will be add to the slot name (_Weapon [1]_, _Weapon [2]_, ...).
+
+Here are some samples of lists with several items for the same slot:
+* http://ws-armory.github.io/?16=1234&16=4321&16=9999&2=1111&3=2222
+* http://ws-armory.github.io/?MyWeapon=1234&MyWeapon=4321&MyWeapon=9999
 
 
 ### Page template ###
