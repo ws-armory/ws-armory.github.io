@@ -290,6 +290,33 @@ function getItemsPageParams(params) {
 	return null;
 }
 
+function loadNew() {
+	var tbody = document.getElementById('list');
+
+	for (var slotId in ITEM_SLOTS) {
+		var tr = document.createElement('tr'),
+		slot = document.createElement('td'),
+		it = document.createElement('td'),
+		input = document.createElement('input');
+
+		slot.className = 'slot';
+		slot.appendChild(document.createTextNode(ITEM_SLOTS[slotId]));
+
+		input.className = 'item';
+		input.type = 'text';
+		input.name = slotId;
+
+		it.id = 'item-' + slotId;
+		it.className = 'item';
+		it.appendChild(input);
+
+		tr.appendChild(slot);
+		tr.appendChild(it);
+
+		tbody.appendChild(tr);
+	}
+}
+
 
 function initIndex() {
 	addLoadEvent(loadGoogleAnalytics());
@@ -321,4 +348,9 @@ function initRedirect() {
 				"Error: invalid query string !";
 		}
 	});
+}
+
+function initNew() {
+	addLoadEvent(loadGoogleAnalytics());
+	addLoadEvent(function(){ loadNew(); });
 }
