@@ -89,7 +89,7 @@ Here is some examples of valid links to the equipment with id `#1234` (which is 
 #### Building custom lists ####
 
 ##### Specifying slot names #####
-~~ You can build lists with custom slot names by specifying names for slots (instead of _#_) as key of the query string. ~~ (Feature was removed)
+~~You can build lists with custom slot names by specifying names for slots as key of the query string~~ (Feature was removed)
 
 ##### Several items for the same slot #####
 It is possible to give several items for the same slot by specifying the slot name/_#_ as a key several times in the query string. In the view, a number will be add to the slot name (_Weapon [1]_, _Weapon [2]_, ...).
