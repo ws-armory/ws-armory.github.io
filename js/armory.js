@@ -72,7 +72,6 @@ function loadParams() {
 			);
 		}
 	}
-	console.log(urlparams);
 
 	return urlparams;
 }
