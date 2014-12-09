@@ -180,3 +180,9 @@ a.item {
 	text-decoration: none;
 	font-size: 18px;
 }
+
+.error {
+	text-align: center;
+	padding: 20px;
+
+}
