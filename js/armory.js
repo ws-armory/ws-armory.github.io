@@ -305,7 +305,7 @@ function initView() {
 			preload: true,
 			colors: true,
 			names: true,
-			whitebg: true,
+			whitebg: false,
 		};
 		loadItems(loadParams());
 	});
