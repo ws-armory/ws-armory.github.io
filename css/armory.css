@@ -34,17 +34,16 @@ button {
 	position: absolute;
 	width: 100%;
 	text-align: center;
+	margin-top: 20px;
 }
 
 #sharelink {
-	width: 80%;
-	margin-left: 10%;
-	display: block;
 	text-align: center;
 	padding: 4px 8px;
 	outline: none;
 	border: none;
 	margin-top: 5px;
+	width: 18em;
 }
 
 #project {
@@ -184,5 +183,8 @@ a.item {
 .error {
 	text-align: center;
 	padding: 20px;
+}
 
+section.error {
+	margin-top: 40px;
 }

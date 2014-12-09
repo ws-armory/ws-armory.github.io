@@ -150,10 +150,11 @@ function loadItems(obj){
 
 	share.id = 'share';
 	share.appendChild(button);
+	share.appendChild(document.createElement('br'));
 	share.appendChild(link);
 
 	section.appendChild(table);
-	table.appendChild(share);
+	section.appendChild(share);
 
 	for (var key in obj) {
 		if (obj[key].constructor !== Array)
