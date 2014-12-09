@@ -78,13 +78,13 @@ function loadParams() {
 
 function getSlotName(num) {
 	if (isNaN(num))
-		return num;
+		return false;
 	else
 	{
 		if (ITEM_SLOTS[parseInt(num)])
 			return ITEM_SLOTS[parseInt(num)];
 		else
-			return num;
+			return false;
 	}
 }
 
@@ -172,13 +172,16 @@ function loadItems(obj){
 			a = document.createElement('a'),
 			slotName = getSlotName(key);
 
+			if (slotName === false)
+				continue;
+
+			slot.className = 'slot ' +
+				slotName.replace(' ', '_').toLowerCase();
+
 			if (obj[key].length > 1) {
 				slotName = slotName+' ['+(i+1).toString()+']';
 			}
 
-			var itemClass = ITEM_SLOTS[key].replace(' ', '_').toLowerCase();
-
-			slot.className = 'slot ' + itemClass;
 			slot.appendChild(document.createTextNode(slotName));
 
 			a.className = 'item';
