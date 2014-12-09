@@ -1,3 +1,10 @@
+html {
+	box-sizing: border-box;
+}
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
 #items {
 	text-align: left;
 }
@@ -10,17 +17,166 @@
 	width: 150px;
 }
 
-#sharelink {
-	margin-left: 8px;
-	width: 18em;
+button {
+	text-align: center;
+	outline: 0;
+	border: 0;
+	-webkit-appearance: none;
+	background: #484848;
+	padding: 8px 10px;
+	font-weight: bold;
+	color: #FFF;
+	cursor: pointer;
+	margin-top: 15px;
+}
+
+#share {
+	position: absolute;
+	width: 100%;
 	text-align: center;
 }
 
+#sharelink {
+	width: 80%;
+	margin-left: 10%;
+	display: block;
+	text-align: center;
+	padding: 4px 8px;
+	outline: none;
+	border: none;
+	margin-top: 5px;
+}
+
+#project {
+	color: #3da1db;
+	text-decoration: none;
+}
+
 footer {
-	margin-top: 32px;
+	height: 50px;
+	font-weight: bold;
+	font-size: 15px;
+	letter-spacing: .15px;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	background: #000;
+	width: 100%;
+	line-height: 50px;
+	padding: 0 20px;
+	text-align: center;
 }
 
 #curse {
-	color:inherit;
+	color: white;
 	text-decoration: none;
+	border-bottom: 2px solid #FFF;
+}
+
+*{
+	margin:0;
+	padding:0;
+}
+
+body {
+	background:#242424;
+	color:#fff;
+	font-family: sans-serif;
+	/*overflow-x: scroll;*/
+	padding-bottom: 180px;
+}
+
+header {
+	background:#e5e5e5;
+	height: 140px;
+
+}
+
+h1 {
+	width: 306px;
+	height: 110px;
+	background: url("../images/logo.png");
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	margin:0 auto;
+	position: relative;
+	top:14px;
+}
+
+.items {
+	height: 30px;
+	background:#484848;
+	letter-spacing: 8px;
+	line-height: 33px;
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 14px;
+}
+
+thead {
+	display: none;
+}
+
+table {
+	position: relative;
+	top: 30px;
+	margin: 0 auto;
+}
+
+td.slot {
+	width: 36px;
+	height: 36px;
+	display: inline-block;
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	margin: 8px 15px 5px 0;
+}
+
+td.chest {
+	background: url("../images/chest.png") no-repeat;
+}
+
+td.feet {
+	background: url("../images/feet.png") no-repeat;
+}
+
+td.gadget {
+	background: url("../images/gadget.png") no-repeat;
+}
+
+td.head {
+	background: url("../images/head.png") no-repeat;
+}
+
+td.implant {
+	background: url("../images/implant.png") no-repeat;
+}
+
+td.legs {
+	background: url("../images/legs.png") no-repeat;
+}
+
+td.weapon_attachment,
+td.energy_shield {
+	background: url("../images/shield_attachment.png") no-repeat;	
+}
+
+td.shoulders {
+	background: url("../images/shoulders.png") no-repeat;
+}
+
+td.support {
+	background: url("../images/support.png") no-repeat;
+}
+
+td.hands,
+td.weapon {
+	background: url("../images/weapon_hands.png") no-repeat;
+}
+
+a.item {
+	text-decoration: none;
+	font-size: 18px;
 }

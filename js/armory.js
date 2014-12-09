@@ -18,6 +18,7 @@ const ITEM_SLOTS = {
 	16: "Weapon",
 	17: "Bag",
 }
+
 var linked = false;
 
 function addLoadEvent(func) {
@@ -153,7 +154,7 @@ function loadItems(obj){
 	share.appendChild(link);
 
 	section.appendChild(table);
-	section.appendChild(share);
+	table.appendChild(share);
 
 	for (var key in obj) {
 		if (obj[key].constructor !== Array)
@@ -175,7 +176,9 @@ function loadItems(obj){
 				slotName = slotName+' ['+(i+1).toString()+']';
 			}
 
-			slot.className = 'slot';
+			var itemClass = ITEM_SLOTS[key].replace(' ', '_').toLowerCase();
+
+			slot.className = 'slot ' + itemClass;
 			slot.appendChild(document.createTextNode(slotName));
 
 			a.className = 'item';
