@@ -182,6 +182,7 @@ function loadItems(obj){
 				slotName = slotName+' ['+(i+1).toString()+']';
 			}
 
+			slot.title = slotName;
 			slot.appendChild(document.createTextNode(slotName));
 
 			a.className = 'item';
