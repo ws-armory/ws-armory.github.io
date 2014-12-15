@@ -57,10 +57,9 @@ footer {
 	font-size: 15px;
 	letter-spacing: .15px;
 	position: fixed;
-	left: 0;
+	right: 0;
 	bottom: 0;
 	background: #000;
-	width: 100%;
 	line-height: 50px;
 	padding: 0 20px;
 	text-align: center;
