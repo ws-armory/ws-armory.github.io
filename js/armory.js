@@ -58,18 +58,18 @@ function loadParams() {
 	var match,
 	urlparams = {},
 	exp = /([^&=]+)=?([^&]*)/g,
-	query  = window.location.search.substring(1);
+	query  = window.location.search.substring(1),
+	name,
+	val;
 
 	while (match = exp.exec(query)) {
-		if (urlparams[decodeURIComponent(match[1])] == undefined) {
-			urlparams[decodeURIComponent(match[1])] = []
-			urlparams[decodeURIComponent(match[1])].push(
-				decodeURIComponent(match[2])
-			);
+		name = decodeURIComponent(match[1]).replace(/\+/g,' ')
+		val = decodeURIComponent(match[2]).replace(/\+/g,' ')
+		if (urlparams[name] == undefined) {
+			urlparams[name] = [];
+			urlparams[name].push(val);
 		} else {
-			urlparams[decodeURIComponent(match[1])].push(
-				decodeURIComponent(match[2])
-			);
+			urlparams[name].push(val);
 		}
 	}
 
@@ -109,6 +109,27 @@ function viewItems(){
 			+ '='+ encodeURIComponent(data[key]);
 	}
 	window.location.assign(getLocalUrl('?' + query.slice(1)));
+}
+
+function loadInfo(obj){
+	var section = document.getElementById("info");
+
+	for (var key in obj) {
+		if (obj[key].constructor !== Array)
+			continue;
+
+		if (key == "title") {
+			if (obj[key][0].constructor !== String)
+				continue;
+
+			var title = document.createElement("h2");
+
+			title.id = "title";
+			title.appendChild(document.createTextNode(obj[key][0]));
+
+			section.appendChild(title);
+		}
+	}
 }
 
 function loadItems(obj){
@@ -311,6 +332,7 @@ function initView() {
 			names: true,
 			whitebg: false,
 		};
+		loadInfo(loadParams());
 		loadItems(loadParams());
 	});
 }
