@@ -137,7 +137,7 @@ function loadItems(obj){
 	    error = document.getElementById('error');
 
 	if (obj == null || Object.getOwnPropertyNames(obj).length === 0) {
-		error.innerHTML = "No items given!";
+		error.innerHTML = "No items given.</br></br>Please use the Wildstar Armory addon to generate item lists.";
 		return;
 	}
 
