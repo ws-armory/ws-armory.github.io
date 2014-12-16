@@ -102,6 +102,13 @@ h1 {
 	top:14px;
 }
 
+#title {
+	text-align: center;
+	margin:0 auto;
+	margin-top: 20px;
+	font-size: 20px;
+}
+
 .items {
 	height: 30px;
 	background:#484848;
