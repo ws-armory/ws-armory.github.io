@@ -18,6 +18,23 @@ const ITEM_SLOTS = {
 	16: "Weapon",
 	17: "Bag",
 }
+const ITEM_ORDER = [
+	16, // Weapon
+	15, // Energy Shield
+	2,  // Head
+	3,  // Shoulder
+	0,  // Chest
+	5,  // Hands
+	4,  // Feet
+	1,  // Legs
+	7,  // Tool
+	7,  // Weapon Attachment
+	8,  // Support System
+	11, // Gadget
+	8,  // Key
+	10, // Implant
+	17, // Bag
+]
 
 var linked = false;
 
@@ -88,6 +105,10 @@ function getSlotName(num) {
 	}
 }
 
+function sortItems(a,b) {
+	return ITEM_ORDER.indexOf(parseInt(a)) - ITEM_ORDER.indexOf(parseInt(b));
+}
+
 function viewItems(){
 	var data = document.getElementById('data').value,
 	query;
@@ -146,7 +167,8 @@ function loadItems(obj){
 	tbody = document.createElement('tbody'),
 	button = document.createElement('button'),
 	share = document.createElement('p'),
-	link = document.createElement('input');
+	link = document.createElement('input'),
+	ids = [];
 
 	table.id = 'items';
 	table.appendChild(thead);
@@ -178,10 +200,18 @@ function loadItems(obj){
 	section.appendChild(share);
 
 	for (var key in obj) {
+		if (isNaN(key))
+			continue;
+		ids.push(key);
+	}
+	ids.sort(sortItems);
+
+
+	for (var key of ids) {
 		if (obj[key].constructor !== Array)
 			continue;
 
-		for (var i = 0; i < obj[key].length; i++) {
+		for (var i in obj[key]) {
 			var itemId = obj[key][i];
 
 			if (itemId && isNaN(itemId))
