@@ -135,7 +135,8 @@ td.slot {
 	text-indent: 100%;
 	white-space: nowrap;
 	overflow: hidden;
-	margin: 8px 15px 5px 0;
+	margin: 8px 15px 5px 0px;
+	margin: 0px 15px 0px 0px;
 }
 
 td.chest {
