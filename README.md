@@ -98,6 +98,13 @@ Here are some samples of lists with several items for the same slot:
 * http://ws-armory.github.io/?16=1234&16=4321&16=9999&2=1111&3=2222
 * http://ws-armory.github.io/?10=1234&10=4321&10=9999
 
+##### Giving lists a title #####
+The `title` key of the query string can be used to specify a title for a list.
+
+Here are some examples of entitled lists:
+* http://ws-armory.github.io/?10=1234&10=4321&10=9999&title=My+Character%40Realm+-+Class+%5B50%5D
+* http://ws-armory.github.io/?10=1234&10=4321&10=9999&title=Medic+Healing+Build
+
 
 ### Page template ###
 

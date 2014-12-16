@@ -21,13 +21,14 @@ button {
 	text-align: center;
 	outline: 0;
 	border: 0;
+	border-radius: 2px;
 	-webkit-appearance: none;
-	background: #484848;
-	padding: 8px 10px;
+	background: #376c75;
+	padding: 8px 20px;
 	font-weight: bold;
 	color: #FFF;
 	cursor: pointer;
-	margin-top: 15px;
+	margin-top: 35px;
 }
 
 #share {
@@ -42,12 +43,12 @@ button {
 	padding: 4px 8px;
 	outline: none;
 	border: none;
-	margin-top: 5px;
+	margin-top: 12px;
 	width: 18em;
 }
 
 #project {
-	color: #3da1db;
+	color: #376c75;
 	text-decoration: none;
 }
 
@@ -57,9 +58,10 @@ footer {
 	font-size: 15px;
 	letter-spacing: .15px;
 	position: fixed;
-	right: 0;
+	left: 0;
 	bottom: 0;
 	background: #000;
+	width: 100%;
 	line-height: 50px;
 	padding: 0 20px;
 	text-align: center;
@@ -68,7 +70,6 @@ footer {
 #curse {
 	color: white;
 	text-decoration: none;
-	border-bottom: 2px solid #FFF;
 }
 
 *{
@@ -99,7 +100,18 @@ h1 {
 	overflow: hidden;
 	margin:0 auto;
 	position: relative;
-	top:14px;
+	top:0px;
+}
+
+h2 {
+	font-size: 18px;
+	padding-top: 12px;
+	color: #376c75;
+}
+
+#title {
+	text-align: center;
+	margin-top: 30px;
 }
 
 #title {
@@ -112,7 +124,7 @@ h1 {
 .items {
 	height: 30px;
 	background:#484848;
-	letter-spacing: 8px;
+	letter-spacing: 6px;
 	line-height: 33px;
 	text-transform: uppercase;
 	text-align: center;
@@ -136,7 +148,12 @@ td.slot {
 	text-indent: 100%;
 	white-space: nowrap;
 	overflow: hidden;
-	margin: 8px 15px 5px 0;
+<<<<<<< HEAD
+	margin: 3px 15px 3px 0;
+=======
+	margin: 8px 15px 5px 0px;
+	margin: 0px 15px 0px 0px;
+>>>>>>> FETCH_HEAD
 }
 
 td.chest {
@@ -192,5 +209,6 @@ a.item {
 }
 
 section.error {
-	margin-top: 40px;
+	margin-top: 20px;
+	font-size: 18px;
 }
