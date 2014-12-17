@@ -27,11 +27,11 @@ const ITEM_ORDER = [
 	5,  // Hands
 	4,  // Feet
 	1,  // Legs
-	7,  // Tool
+	6,  // Tool
 	7,  // Weapon Attachment
 	8,  // Support System
 	11, // Gadget
-	8,  // Key
+	9,  // Key
 	10, // Implant
 	17, // Bag
 ]
