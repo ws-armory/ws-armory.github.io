@@ -25,8 +25,8 @@ const ITEM_ORDER = [
 	3,  // Shoulder
 	0,  // Chest
 	5,  // Hands
-	4,  // Feet
 	1,  // Legs
+	4,  // Feet
 	6,  // Tool
 	7,  // Weapon Attachment
 	8,  // Support System
