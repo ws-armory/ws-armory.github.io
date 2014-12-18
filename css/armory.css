@@ -28,7 +28,7 @@ button {
 	font-weight: bold;
 	color: #FFF;
 	cursor: pointer;
-	margin-top: 35px;
+	margin-top: 25px;
 }
 
 #share {
@@ -82,7 +82,7 @@ body {
 	color:#fff;
 	font-family: sans-serif;
 	/*overflow-x: scroll;*/
-	padding-bottom: 180px;
+	padding-bottom: 120px;
 }
 
 header {
@@ -104,9 +104,9 @@ h1 {
 }
 
 h2 {
-	font-size: 18px;
-	padding-top: 12px;
-	color: #376c75;
+	font-size: 20px;
+	padding-top: 8px;
+	color: #FFF;
 }
 
 #title {
@@ -130,7 +130,7 @@ thead {
 
 table {
 	position: relative;
-	top: 30px;
+	top: 20px;
 	margin: 0 auto;
 }
 
