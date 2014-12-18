@@ -200,3 +200,7 @@ section.error {
 	margin-top: 20px;
 	font-size: 18px;
 }
+
+td.item {
+	padding: 0px 5px;
+}
