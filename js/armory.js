@@ -237,6 +237,7 @@ function loadItems(obj){
 			slot.appendChild(document.createTextNode(slotName));
 
 			a.className = 'item';
+			a.setAttribute("target", "_blank");
 			a.href='http://' + JH_HOST + '/items/i-' + itemId;
 			a.appendChild(document.createTextNode(itemId));
 
