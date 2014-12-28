@@ -207,7 +207,8 @@ function loadItems(obj){
 	ids.sort(sortItems);
 
 
-	for (var key of ids) {
+	for (var k in ids) {
+		var key = ids[k];
 		if (obj[key].constructor !== Array)
 			continue;
 
