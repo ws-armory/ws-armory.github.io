@@ -1,5 +1,5 @@
 # Wildstar "Armory" project ##
-[![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/ws-armory/ws-armory.github.io/~chat)
+[![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/ws-armory)
 
 ## Summary ##
 * [Overview](#overview)
@@ -156,7 +156,5 @@ Nevertheless, if think of a killer feature and you really need to base it on a b
 
 
 ## Contact ##
-* [Armory chat room](https://gitter.im/ws-armory/chat/~chat)
-* [Website chat room](https://gitter.im/ws-armory/ws-armory.github.io/~chat)
+* [Armory chat room](https://gitter.im/ws-armory)
 * [Bug report and Feature request](https://github.com/ws-armory/ws-armory.github.io/issues)
-* [Private message](https://github.com/olbat)
