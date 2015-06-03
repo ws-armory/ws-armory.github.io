@@ -158,7 +158,7 @@ function loadItems(obj){
 	    error = document.getElementById('error');
 
 	if (obj == null || Object.getOwnPropertyNames(obj).length === 0) {
-		error.innerHTML = "No items given.</br></br>Please use the Wildstar Armory addon to generate item lists.";
+		error.innerHTML = "No items given.<br/><br/>Please use the Wildstar Armory addon to generate item lists.<br/><br/>Item list example: <a href=\"http://ws-armory.github.io/v?ieRmDB\">http://ws-armory.github.io/v?ieRmDB</a>";
 		return;
 	}
 
